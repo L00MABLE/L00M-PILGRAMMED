@@ -4,7 +4,7 @@ gui.Parent = game.Players.LocalPlayer.PlayerGui
  
 local frame = Instance.new("Frame")
 frame.Position = UDim2.new(0.5, -100, 0.5, -50) -- position in the center of the screen
-frame.Size = UDim2.new(0, 200, 0, 100) -- size of the frame
+frame.Size = UDim2.new({0, 662},{0, 462}) -- size of the frame
 frame.BackgroundTransparency = 0.5 -- make the background semi-transparent
 frame.BackgroundColor3 = Color3.new(0, 0, 0) -- set the background color to black
 frame.BorderSizePixel = 0 -- remove the border
