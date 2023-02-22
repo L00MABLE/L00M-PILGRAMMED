@@ -1,0 +1,73 @@
+local gui = Instance.new("ScreenGui")
+gui.Parent = game.Players.LocalPlayer.PlayerGui
+ 
+ 
+local frame = Instance.new("Frame")
+frame.Position = UDim2.new(0.5, -100, 0.5, -50) -- position in the center of the screen
+frame.Size = UDim2.new(0, 200, 0, 100) -- size of the frame
+frame.BackgroundTransparency = 0.5 -- make the background semi-transparent
+frame.BackgroundColor3 = Color3.new(0, 0, 0) -- set the background color to black
+frame.BorderSizePixel = 0 -- remove the border
+frame.Active = true -- enable input
+frame.Draggable = true -- make the frame draggable
+frame.Parent = gui
+ 
+ 
+local title = Instance.new("TextLabel")
+title.Text = "L00M's Meteor GUI"
+title.Position = UDim2.new(0, 0, 0, 10) -- position the label at the top of the frame
+title.Size = UDim2.new(1, 0, 0, 20) -- make the label full width and 20 pixels tall
+title.TextColor3 = Color3.new(1, 1, 1) -- set the text color to white
+title.Font = Enum.Font.SourceSansBold -- set the font to bold SourceSans
+title.TextSize = 20 -- set the font size to 20
+title.BackgroundTransparency = 1 -- make the background transparent
+title.Parent = frame
+ 
+ 
+local button = Instance.new("TextButton")
+button.Text = "Meteor esp (Recommended lvl 30) Bugs(🟡)"
+button.Position = UDim2.new(0.5, -50, 0.5, -15) -- position the button in the center of the frame
+button.Size = UDim2.new(0, 100, 0, 30) -- make the button 100 pixels wide and 30 pixels tall
+button.TextColor3 = Color3.new(1, 1, 1) -- set the text color to white
+button.Font = Enum.Font.SourceSans -- set the font to SourceSans
+button.TextSize = 14 -- set the font size to 14
+button.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2) -- set the background color to dark gray
+button.BorderSizePixel = 0 -- remove the border
+button.Parent = frame
+ 
+ 
+button.MouseButton1Click:Connect(function()
+    local partName = "Meteor" -- replace with the name of the part you're checking for
+local soundId = "rbxassetid://6160675006" -- replace with the ID of the sound you want to play
+local volume = 100 -- starting volume, can be changed later
+ 
+while true do
+    local part = workspace:FindFirstChild(partName)
+ 
+    if part then
+        local sound = Instance.new("Sound")
+        sound.SoundId = soundId
+        sound.Parent = part
+        sound.Volume = volume
+        sound:Play()
+ 
+        wait(2) -- wait 2 seconds before highlighting and printing CFrame
+ 
+        local highlight = Instance.new("BoxHandleAdornment")
+        highlight.Name = "highlight"
+        highlight.Adornee = part
+        highlight.Size = part.Size + Vector3.new(0.1, 0.1, 0.1)
+        highlight.AlwaysOnTop = true
+        highlight.Color3 = Color3.fromRGB(255, 255, 0)
+        highlight.Transparency = 0.5
+        highlight.ZIndex = 10
+        highlight.Parent = part
+ 
+        print("Part is in workspace with CFrame: ", part.CFrame)
+    else
+        print("Part not found in workspace.")
+    end
+ 
+    wait(5) -- wait 5 seconds before running the loop again
+end
+end)
